@@ -7,8 +7,8 @@ class AnotherPlayerCardComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.white,
-      width: 50,
-      height: 100,
+      width: 20,
+      height: 40,
     );
   }
 }

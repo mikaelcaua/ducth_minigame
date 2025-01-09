@@ -2,21 +2,14 @@ import 'package:ducth_minigame/ui/components/card/another_player_card_component.
 import 'package:flutter/material.dart';
 
 class AnotherPlayerHandComponent extends StatelessWidget {
-  const AnotherPlayerHandComponent({super.key});
-
+  const AnotherPlayerHandComponent({super.key, required this.anotherPlayerCards});
+  final List<AnotherPlayerCardComponent> anotherPlayerCards;
   @override
   Widget build(BuildContext context) {
-    return Column(
-      spacing: 20,
-      children: [
-        Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
-          AnotherPlayerCardComponent(),
-          AnotherPlayerCardComponent(),
-          AnotherPlayerCardComponent(),
-          AnotherPlayerCardComponent(),
-          AnotherPlayerCardComponent()
-        ]),
-      ],
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      spacing: 10,
+      children: anotherPlayerCards,
     );
   }
 }

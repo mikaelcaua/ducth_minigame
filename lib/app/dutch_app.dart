@@ -1,4 +1,4 @@
-import 'package:ducth_minigame/ui/screens/home_screen.dart';
+import 'package:ducth_minigame/ui/screens/game_screen.dart';
 import 'package:flutter/material.dart';
 
 class DutchApp extends StatelessWidget {
@@ -8,7 +8,7 @@ class DutchApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData.dark(),
-      home: HomeScreen(),
+      home: GameScreen(),
       debugShowCheckedModeBanner: false,
     );
   }
