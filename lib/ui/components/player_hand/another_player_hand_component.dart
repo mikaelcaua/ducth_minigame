@@ -1,8 +1,9 @@
-import 'package:ducth_minigame/ui/components/card/another_player_card_component.dart';
 import 'package:flutter/material.dart';
+import '../card/another_player_card_component.dart';
 
 class AnotherPlayerHandComponent extends StatelessWidget {
-  const AnotherPlayerHandComponent({super.key, required this.anotherPlayerCards});
+  const AnotherPlayerHandComponent(
+      {super.key, required this.anotherPlayerCards});
   final List<AnotherPlayerCardComponent> anotherPlayerCards;
   @override
   Widget build(BuildContext context) {

@@ -1,5 +1,5 @@
-import 'package:ducth_minigame/app/models/player_card_model.dart';
-import 'package:ducth_minigame/app/utills/card_suit.dart';
+import '../models/player_card_model.dart';
+import '../utills/card_suit.dart';
 
 class CardRepository {
   PlayerCardModel generateCard() {

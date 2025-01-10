@@ -1,4 +1,4 @@
-import 'package:ducth_minigame/app/utills/card_suit.dart';
+import '../utills/card_suit.dart';
 
 class PlayerCardModel {
   final int number;

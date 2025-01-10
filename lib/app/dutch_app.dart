@@ -1,10 +1,9 @@
-import 'package:ducth_minigame/app/repositories/card_repository.dart';
-import 'package:ducth_minigame/ui/viewmodels/game_screen_viewmodel.dart';
-import 'package:ducth_minigame/ui/screens/game_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
+import '../ui/screens/game_screen.dart';
 import '../ui/state/player_hand_state.dart';
+import '../ui/viewmodels/game_screen_viewmodel.dart';
+import 'repositories/card_repository.dart';
 
 class DutchApp extends StatelessWidget {
   const DutchApp({super.key});

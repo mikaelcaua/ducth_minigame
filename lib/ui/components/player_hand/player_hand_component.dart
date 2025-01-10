@@ -20,7 +20,7 @@ class _PlayerHandComponentState extends State<PlayerHandComponent> {
       alignment: WrapAlignment.center,
       spacing: 10.0,
       runSpacing: 8.0,
-      children: widget.playerCards.map((e) => PlayerCardComponent(e))
+      children: widget.playerCards.map((e) => PlayerCardComponent(playerCard: e,))
                   .toList(),
     );
   }
