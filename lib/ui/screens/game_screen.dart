@@ -1,16 +1,16 @@
-import 'package:ducth_minigame/app/viewmodel/game_screen_viewmodel.dart';
-import 'package:ducth_minigame/ui/components/card/mid_card_component.dart';
-import 'package:ducth_minigame/ui/components/card/player_card_component.dart';
-import 'package:ducth_minigame/ui/components/player_hand/another_player_hand_component.dart';
-import 'package:ducth_minigame/ui/components/player_hand/player_hand_component.dart';
-import 'package:ducth_minigame/ui/theme/game_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:ducth_minigame/ui/viewmodels/game_screen_viewmodel.dart';
 import '../components/card/another_player_card_component.dart';
+import '../components/card/mid_card_component.dart';
+import '../components/player_hand/another_player_hand_component.dart';
+import '../components/player_hand/player_hand_component.dart';
+import '../theme/game_colors.dart';
 
 class GameScreen extends StatelessWidget {
-  GameScreen({super.key, required this.gameScreenViewmodel});
+  const GameScreen({super.key, required this.gameScreenViewmodel});
   final GameScreenViewmodel gameScreenViewmodel;
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,9 +31,7 @@ class GameScreen extends StatelessWidget {
             ),
             MidCardComponent(),
             PlayerHandComponent(
-              playerCards: gameScreenViewmodel.playerCards
-                  .map((e) => PlayerCardComponent(playerCardModel: e))
-                  .toList(),
+              playerCards: gameScreenViewmodel.playerHandState.playerCards,
             ),
           ],
         ),

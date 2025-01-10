@@ -1,9 +1,11 @@
-import 'package:ducth_minigame/ui/components/card/player_card_component.dart';
+
 import 'package:flutter/material.dart';
+import '../../../app/models/player_card_model.dart';
+import '../card/player_card_component.dart';
 
 class PlayerHandComponent extends StatefulWidget {
   const PlayerHandComponent({super.key, required this.playerCards});
-  final List<PlayerCardComponent> playerCards;
+  final List<PlayerCardModel> playerCards;
 
   @override
   State<PlayerHandComponent> createState() => _PlayerHandComponentState();
@@ -18,7 +20,8 @@ class _PlayerHandComponentState extends State<PlayerHandComponent> {
       alignment: WrapAlignment.center,
       spacing: 10.0,
       runSpacing: 8.0,
-      children: widget.playerCards,
+      children: widget.playerCards.map((e) => PlayerCardComponent(e))
+                  .toList(),
     );
   }
 }
