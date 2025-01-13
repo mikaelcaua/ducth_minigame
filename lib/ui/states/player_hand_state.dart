@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import '../../app/models/player_card_model.dart';
 
@@ -6,9 +7,22 @@ class PlayerHandState extends ChangeNotifier {
 
   List<PlayerCardModel> get playerCards => _playerCards;
 
+  bool _isClickable = true;
+
+  bool get isClickable => _isClickable;
+
+  void turnClickable(){
+    _isClickable = true;
+        notifyListeners();
+  }
+
+  void turnNotClickable(){
+    _isClickable = false;
+        notifyListeners();
+  }
+
   void setInitialCards(List<PlayerCardModel> initialCards) {
     _playerCards = initialCards;
-    notifyListeners();
   }
 
   void updateCard(int index, PlayerCardModel newCard) {

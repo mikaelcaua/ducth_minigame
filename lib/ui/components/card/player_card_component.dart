@@ -3,6 +3,7 @@ import '../../../app/models/player_card_model.dart';
 
 class PlayerCardComponent extends StatefulWidget {
   const PlayerCardComponent({super.key, required this.playerCard});
+  
   final PlayerCardModel playerCard;
 
   @override
@@ -27,7 +28,7 @@ class _PlayerCardComponentState extends State<PlayerCardComponent> {
         width: 75,
         height: 150,
         child: Center(
-          child: Text("${isClicked? widget.playerCard.number: ""}"),
+          child: Text("${isClicked ? widget.playerCard.number : ""}"),
         ),
       ),
     );

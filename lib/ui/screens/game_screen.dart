@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../components/card/another_player_card_component.dart';
 import '../components/card/mid_card_component.dart';
 import '../components/player_hand/another_player_hand_component.dart';
 import '../components/player_hand/player_hand_component.dart';
@@ -17,33 +16,29 @@ class GameScreen extends StatefulWidget {
 class _GameScreenState extends State<GameScreen> {
   @override
   void initState() {
-    // TODO: implement initState
-    widget.gameScreenViewmodel.initializePlayerHand();
+    super.initState();
+    widget.gameScreenViewmodel.setInitialCards();
+    
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          widget.gameScreenViewmodel.playerHandState.removeCard(0);
+
+        },
+      ),
       backgroundColor: gameTableColor,
       body: Padding(
         padding: const EdgeInsets.fromLTRB(40, 40, 40, 10),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            AnotherPlayerHandComponent(
-              anotherPlayerCards: [
-                AnotherPlayerCardComponent(),
-                AnotherPlayerCardComponent(),
-                AnotherPlayerCardComponent(),
-                AnotherPlayerCardComponent(),
-                AnotherPlayerCardComponent(),
-              ],
-            ),
+            AnotherPlayerHandComponent(anotherPlayerCards: []),
             MidCardComponent(),
-            PlayerHandComponent(
-              playerCards:
-                  widget.gameScreenViewmodel.playerHandState.playerCards,
-            ),
+            PlayerHandComponent(),
           ],
         ),
       ),
