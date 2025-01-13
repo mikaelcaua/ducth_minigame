@@ -27,7 +27,6 @@ class _GameScreenState extends State<GameScreen> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           widget.gameScreenViewmodel.playerHandState.removeCard(0);
-
         },
       ),
       backgroundColor: gameTableColor,
@@ -38,7 +37,7 @@ class _GameScreenState extends State<GameScreen> {
           children: [
             AnotherPlayerHandComponent(anotherPlayerCards: []),
             MidCardComponent(),
-            PlayerHandComponent(),
+            PlayerHandComponent(playerHandState: widget.gameScreenViewmodel.playerHandState,),
           ],
         ),
       ),

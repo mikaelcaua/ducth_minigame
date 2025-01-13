@@ -1,10 +1,14 @@
+
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart'; 
 import '../../states/player_hand_state.dart';
 import '../card/player_card_component.dart';
 
 class PlayerHandComponent extends StatelessWidget {
-  const PlayerHandComponent({super.key});
+  const PlayerHandComponent({
+    Key? key,
+    required this.playerHandState,
+  }) : super(key: key);
+  final PlayerHandState playerHandState;
   
   @override
   Widget build(BuildContext context) {
@@ -12,7 +16,7 @@ class PlayerHandComponent extends StatelessWidget {
           alignment: WrapAlignment.center,
           spacing: 10.0,
           runSpacing: 8.0,
-          children: context.watch<PlayerHandState>().playerCards
+          children: playerHandState.playerCards
               .map((e) => PlayerCardComponent(playerCard: e))
               .toList(),
         );
