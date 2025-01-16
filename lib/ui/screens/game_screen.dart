@@ -5,20 +5,9 @@ import '../components/player_hand/player_hand_component.dart';
 import '../theme/game_colors.dart';
 import '../viewmodels/game_viewmodel.dart';
 
-class GameScreen extends StatefulWidget {
+class GameScreen extends StatelessWidget {
   const GameScreen({super.key, required this.gameViewmodel});
   final GameViewmodel gameViewmodel;
-
-  @override
-  State<GameScreen> createState() => _GameScreenState();
-}
-
-class _GameScreenState extends State<GameScreen> {
-  @override
-  void initState() {
-    super.initState();
-    widget.gameViewmodel.initGame();
-  }
 
   @override
   Widget build(BuildContext context) {

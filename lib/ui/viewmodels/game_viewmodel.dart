@@ -6,8 +6,8 @@ class GameViewmodel extends ChangeNotifier {
   GameViewmodel(this.cardRepository);
   final CardRepository cardRepository;
 
-  late PlayerCardModel midcard;
-  late List<PlayerCardModel> playerCards;
+  late PlayerCardModel midcard = midcard = (cardRepository.generateCard());
+  late List<PlayerCardModel> playerCards = cardRepository.generateStartGameCards();
 
   bool _isClickable = true;
 
@@ -35,10 +35,5 @@ class GameViewmodel extends ChangeNotifier {
   void setMidCard(PlayerCardModel card) {
     midcard = card;
     notifyListeners();
-  }
-
-  void initGame() {
-    playerCards = cardRepository.generateStartGameCards();
-    midcard = (cardRepository.generateCard());
   }
 }
