@@ -30,8 +30,8 @@ class PlayerHandState extends ChangeNotifier {
     notifyListeners();
   }
 
-  void removeCard(int index) {
-    _playerCards.removeAt(index);
+  void removeCard(PlayerCardModel card) {
+    _playerCards.remove(card);
     notifyListeners();
   }
 }

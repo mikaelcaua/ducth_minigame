@@ -17,18 +17,12 @@ class _GameScreenState extends State<GameScreen> {
   @override
   void initState() {
     super.initState();
-    widget.gameScreenViewmodel.setInitialCards();
-    
+    widget.gameScreenViewmodel.initGame();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          widget.gameScreenViewmodel.playerHandState.removeCard(0);
-        },
-      ),
       backgroundColor: gameTableColor,
       body: Padding(
         padding: const EdgeInsets.fromLTRB(40, 40, 40, 10),
@@ -36,8 +30,8 @@ class _GameScreenState extends State<GameScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             AnotherPlayerHandComponent(anotherPlayerCards: []),
-            MidCardComponent(),
-            PlayerHandComponent(playerHandState: widget.gameScreenViewmodel.playerHandState,midCardState: widget.gameScreenViewmodel.midCardState,),
+            MidCardComponent(midCardState: widget.gameScreenViewmodel.midCardState,),
+            PlayerHandComponent(playerHandState: widget.gameScreenViewmodel.playerHandState,midCardState: widget.gameScreenViewmodel.midCardState,removeCard: widget.gameScreenViewmodel.removeCard,),
           ],
         ),
       ),

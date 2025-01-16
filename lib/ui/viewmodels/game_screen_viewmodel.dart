@@ -9,9 +9,10 @@ class GameScreenViewmodel {
   final PlayerHandState playerHandState;
   final MidCardState midCardState;
 
-  void setInitialCards() {
+  void initGame() {
     List<PlayerCardModel> initialCards = cardRepository.generateStartGameCards();
     playerHandState.setInitialCards(initialCards);
+    midCardState.setInitCard(cardRepository.generateCard());
   }
 
   void updateCard(int index) {
@@ -19,7 +20,7 @@ class GameScreenViewmodel {
     playerHandState.updateCard(index, newCard);  
   }
 
-  void removeCard(int index) {
-    playerHandState.removeCard(index);
+  void removeCard(PlayerCardModel card) {
+    playerHandState.removeCard(card);
   }
 }
