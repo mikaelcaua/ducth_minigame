@@ -1,19 +1,11 @@
-
-import 'package:ducth_minigame/ui/states/mid_card_state.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../../../app/models/player_card_model.dart';
-import '../../states/player_hand_state.dart';
+import '../../viewmodels/game_viewmodel.dart';
 
 class PlayerCardComponent extends StatefulWidget {
-  const PlayerCardComponent(
-      {super.key, required this.playerCard, required this.playerHandState, required this.removeCard, required this.midCardState});
-
+  const PlayerCardComponent({super.key, required this.playerCard});
   final PlayerCardModel playerCard;
-  final PlayerHandState playerHandState;
-  final MidCardState midCardState;
-  final void Function(PlayerCardModel) removeCard;
-
-
 
   @override
   State<PlayerCardComponent> createState() => _PlayerCardComponentState();
@@ -24,30 +16,27 @@ class _PlayerCardComponentState extends State<PlayerCardComponent> {
 
   void hideOrShowCard() {
     setState(() {
-        isClicked = !isClicked;
-      });
+      isClicked = !isClicked;
+    });
   }
 
-  void discardCard(){
-    PlayerHandState playerHandState = widget.playerHandState; 
+  void discardCard() {
     PlayerCardModel playerCard = widget.playerCard;
-    MidCardState midCardState =  widget.midCardState;
+    GameViewmodel gameViewmodel = Provider.of<GameViewmodel>(context, listen: false);
 
-    if(playerCard.number == midCardState.midcard.number) {
-        widget.removeCard(playerCard);
-        playerHandState.turnClickable();
-        debugPrint("${playerCard.number} == ${midCardState.midcard.number}"); 
-    }
-    else{
+    if (playerCard.number == gameViewmodel.midcard.number) {
+      gameViewmodel.removeCard(playerCard);
+      gameViewmodel.turnClickable();
+      debugPrint("${playerCard.number} == ${gameViewmodel.midcard.number}");
+    } else {
       hideOrShowCard();
-      playerHandState.turnNotClickable();
-      debugPrint("${playerCard.number} == ${midCardState.midcard.number}"); 
+      gameViewmodel.turnNotClickable();
+      debugPrint("${playerCard.number} == ${gameViewmodel.midcard.number}");
     }
   }
 
   void _onClick() {
-    PlayerHandState playerHandState = widget.playerHandState; 
-    if (playerHandState.isClickable) {
+    if (Provider.of<GameViewmodel>(context, listen: false).isClickable) {
       discardCard();
     }
   }

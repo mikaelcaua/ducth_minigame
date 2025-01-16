@@ -1,9 +1,12 @@
+
 import 'package:flutter/material.dart';
-import '../../states/mid_card_state.dart';
+import 'package:provider/provider.dart';
+
+import '../../viewmodels/game_viewmodel.dart';
 
 class MidCardComponent extends StatelessWidget {
-  const MidCardComponent({super.key, required this.midCardState});
-  final MidCardState midCardState;
+  const MidCardComponent({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -12,7 +15,7 @@ class MidCardComponent extends StatelessWidget {
       height: 80,
       child: Center(
         child: Text(
-          midCardState.midcard.number.toString(),
+          Provider.of<GameViewmodel>(context).midcard.number.toString(),
           style: const TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,
