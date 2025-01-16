@@ -37,7 +37,7 @@ class _GameScreenState extends State<GameScreen> {
           children: [
             AnotherPlayerHandComponent(anotherPlayerCards: []),
             MidCardComponent(),
-            PlayerHandComponent(playerHandState: widget.gameScreenViewmodel.playerHandState,),
+            PlayerHandComponent(playerHandState: widget.gameScreenViewmodel.playerHandState,midCardState: widget.gameScreenViewmodel.midCardState,),
           ],
         ),
       ),

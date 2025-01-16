@@ -1,3 +1,4 @@
+import 'package:ducth_minigame/ui/states/mid_card_state.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../ui/screens/game_screen.dart';
@@ -15,14 +16,14 @@ class DutchApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (context) => PlayerHandState(),
         ),
+        ChangeNotifierProvider(create: (context) => MidCardState(),)
       ],
       child: MaterialApp(
         theme: ThemeData.dark(),
         home: Builder(
           builder: (context) {
-            final playerHandState = Provider.of<PlayerHandState>(context);
             return GameScreen(
-              gameScreenViewmodel: GameScreenViewmodel(CardRepository(), playerHandState),
+              gameScreenViewmodel: GameScreenViewmodel(CardRepository(), Provider.of<PlayerHandState>(context), Provider.of<MidCardState>(context)),
             );
           },
         ),

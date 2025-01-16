@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import '../../../app/models/player_card_model.dart';
+import '../../states/player_hand_state.dart';
 
 class PlayerCardComponent extends StatefulWidget {
-  const PlayerCardComponent({super.key, required this.playerCard});
-  
+  const PlayerCardComponent(
+      {super.key, required this.playerCard, required this.playerHandState});
+
   final PlayerCardModel playerCard;
+  final PlayerHandState playerHandState;
 
   @override
   State<PlayerCardComponent> createState() => _PlayerCardComponentState();
@@ -14,9 +17,12 @@ class _PlayerCardComponentState extends State<PlayerCardComponent> {
   bool isClicked = false;
 
   void _toggleCardColor() {
-    setState(() {
-      isClicked = !isClicked;
-    });
+    if (widget.playerHandState.isClickable) {
+      setState(() {
+        isClicked = !isClicked;
+        widget.playerHandState.turnNotClickable();
+      });
+    }
   }
 
   @override
