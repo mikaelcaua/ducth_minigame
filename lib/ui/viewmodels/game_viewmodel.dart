@@ -6,24 +6,25 @@ class GameViewmodel extends ChangeNotifier {
   GameViewmodel(this.cardRepository);
   final CardRepository cardRepository;
 
-  late PlayerCardModel midcard = midcard = (cardRepository.generateCard());
-  late List<PlayerCardModel> playerCards = cardRepository.generateStartGameCards();
-
+  late PlayerCardModel midcard = (cardRepository.generateCard());
+  late List<PlayerCardModel> playerCards =
+      cardRepository.generateStartGameCards();
   bool _isClickable = true;
 
   bool get isClickable => _isClickable;
 
   void turnClickable() {
     _isClickable = true;
+    notifyListeners();
   }
 
   void turnNotClickable() {
     _isClickable = false;
+    notifyListeners();
   }
 
-  void updateCard(int index, PlayerCardModel newCard) {
-    playerCards[index] = newCard;
-    notifyListeners();
+  PlayerCardModel updateCard() {
+    return cardRepository.generateCard();
   }
 
   void removeCard(PlayerCardModel card) {
@@ -31,9 +32,24 @@ class GameViewmodel extends ChangeNotifier {
     notifyListeners();
   }
 
-
   void setMidCard(PlayerCardModel card) {
     midcard = card;
     notifyListeners();
   }
+
+  void discardCard(PlayerCardModel playerCard, void Function() hideOrShowCard) {
+    if (isClickable) {
+      if (playerCard.number == midcard.number) {
+        removeCard(playerCard);
+        turnClickable();
+        debugPrint("${playerCard.number} == ${midcard.number}");
+      } else {
+        hideOrShowCard();
+        turnNotClickable();
+        setMidCard(playerCard);
+        debugPrint("${playerCard.number} == ${midcard.number}");
+      }
+    }
+  }
+
 }

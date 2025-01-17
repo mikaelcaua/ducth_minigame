@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -9,19 +8,23 @@ class MidCardComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      width: 40,
-      height: 80,
-      child: Center(
-        child: Text(
-          Provider.of<GameViewmodel>(context).midcard.number.toString(),
-          style: const TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
+    return Consumer<GameViewmodel>(
+      builder: (context, gameViewmodel, child) {
+        return Container(
+          color: Colors.white,
+          width: 40,
+          height: 80,
+          child: Center(
+            child: Text(
+              gameViewmodel.midcard.number.toString(),
+              style: const TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

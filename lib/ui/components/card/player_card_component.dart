@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../app/models/player_card_model.dart';
@@ -20,25 +21,9 @@ class _PlayerCardComponentState extends State<PlayerCardComponent> {
     });
   }
 
-  void discardCard() {
-    PlayerCardModel playerCard = widget.playerCard;
-    GameViewmodel gameViewmodel = Provider.of<GameViewmodel>(context, listen: false);
-
-    if (playerCard.number == gameViewmodel.midcard.number) {
-      gameViewmodel.removeCard(playerCard);
-      gameViewmodel.turnClickable();
-      debugPrint("${playerCard.number} == ${gameViewmodel.midcard.number}");
-    } else {
-      hideOrShowCard();
-      gameViewmodel.turnNotClickable();
-      debugPrint("${playerCard.number} == ${gameViewmodel.midcard.number}");
-    }
-  }
-
   void _onClick() {
-    if (Provider.of<GameViewmodel>(context, listen: false).isClickable) {
-      discardCard();
-    }
+    GameViewmodel gameViewModel = Provider.of<GameViewmodel>(context, listen: false);
+    gameViewModel.discardCard(widget.playerCard, hideOrShowCard); 
   }
 
   @override
