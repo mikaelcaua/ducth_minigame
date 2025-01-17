@@ -23,7 +23,7 @@ class GameViewmodel extends ChangeNotifier {
     notifyListeners();
   }
 
-  PlayerCardModel updateCard() {
+  PlayerCardModel generateCard() {
     return cardRepository.generateCard();
   }
 
@@ -32,12 +32,17 @@ class GameViewmodel extends ChangeNotifier {
     notifyListeners();
   }
 
+  void addCard(PlayerCardModel card) {
+    playerCards.add(card);
+    notifyListeners();
+  }
+
   void setMidCard(PlayerCardModel card) {
     midcard = card;
     notifyListeners();
   }
 
-  void discardCard(PlayerCardModel playerCard, void Function() hideOrShowCard) {
+  discardCard(PlayerCardModel playerCard, void Function() hideOrShowCard) async{
     if (isClickable) {
       if (playerCard.number == midcard.number) {
         removeCard(playerCard);
@@ -45,8 +50,12 @@ class GameViewmodel extends ChangeNotifier {
         debugPrint("${playerCard.number} == ${midcard.number}");
       } else {
         hideOrShowCard();
+        // await Future.delayed(const Duration(seconds: 1)); //testando
         turnNotClickable();
         setMidCard(playerCard);
+        removeCard(playerCard);
+        addCard(generateCard());
+        hideOrShowCard();
         debugPrint("${playerCard.number} == ${midcard.number}");
       }
     }

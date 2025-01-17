@@ -1,12 +1,11 @@
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../app/models/player_card_model.dart';
 import '../../viewmodels/game_viewmodel.dart';
 
 class PlayerCardComponent extends StatefulWidget {
-  const PlayerCardComponent({super.key, required this.playerCard});
-  final PlayerCardModel playerCard;
+  PlayerCardComponent({super.key, required this.playerCard});
+  PlayerCardModel playerCard;
 
   @override
   State<PlayerCardComponent> createState() => _PlayerCardComponentState();
@@ -21,9 +20,11 @@ class _PlayerCardComponentState extends State<PlayerCardComponent> {
     });
   }
 
-  void _onClick() {
-    GameViewmodel gameViewModel = Provider.of<GameViewmodel>(context, listen: false);
-    gameViewModel.discardCard(widget.playerCard, hideOrShowCard); 
+  void _onClick() async {
+    GameViewmodel gameViewModel =
+        Provider.of<GameViewmodel>(context, listen: false);
+    await gameViewModel.discardCard(widget.playerCard, hideOrShowCard);
+    
   }
 
   @override

@@ -12,6 +12,7 @@ class GameScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(onPressed: (){}),
       backgroundColor: gameTableColor,
       body: Padding(
         padding: const EdgeInsets.fromLTRB(40, 40, 40, 10),
